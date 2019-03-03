@@ -125,4 +125,10 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionAdmin()
+    {
+//        print(1);die;
+        return $this->render('admin');
+    }
 }
