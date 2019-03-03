@@ -14,12 +14,7 @@ use yii\base\Model;
 class CateForm extends Model
 {
     public $catename;
-    public $tableName = 'cate';
-
-    public function save()
-    {
-
-    }
+//    public $tableName = 'cate';
 
     /**
      * @return array the validation rules.
