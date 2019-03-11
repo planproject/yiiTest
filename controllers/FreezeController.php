@@ -31,29 +31,31 @@ class FreezeController extends Controller
         ]);
     }
 
+    /**
+     * TODO 页面
+     * @return \yii\web\Response
+     * 新增
+     */
     public function actionAdd()
     {
-//        $model   = new CateForm();
-//        $model->catename = 'asss';
-//        $model->save();
-//        die;
+        $form_data = \Yii::$app->request->post('CateForm');
+        $request   = \Yii::$app->getRequest();
+        $model     = new CateForm();
 
-        \Yii::$app->db->createCommand()->insert('alexa_cate', [
-            'catename' => 'test',
-        ])->execute();
-die;
-        $request = \Yii::$app->getRequest();
+        $model->catename = $form_data['catename'];
+        $model->status   = $form_data['status'];
         //post 提交
-        if ($request->isPost && $model->load(\Yii::$app->request->post())) {
-            $data = (\Yii::$app->request->post());
-            $model->catename = $data['CateForm']['catename'];
-//            $save = $model->save(false);
-            if ($model->save(false)) {
-                return $this->redirect(['index']);
+        if ($model->load(\Yii::$app->request->post())) {
+            $res = $model->save();
+            if ($res){
+                return $this->goBack(\Yii::$app->request->referrer);
+//                return $this->goBack(['freeze/index']);
+//                $this->redirect(['freeze/welcome']);
+            }else{
+                die('提交失败');
             }
-//            print_r($data['CateForm']['catename']);die;
-//            $model->add();
         }
+        //TODO 列表页渲染
     }
 
 

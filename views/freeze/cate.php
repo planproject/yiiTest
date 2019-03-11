@@ -1,6 +1,9 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+error_reporting(E_ALL^E_NOTICE);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +50,8 @@ use yii\bootstrap\ActiveForm;
               'options' => ['class' => 'layui-form layui-col-md12 x-so layui-form-pane'],
           ]); ?>
           <?= $form->field($model, 'catename')->textInput(['class' => 'layui-input', 'placeholder' => '分类名']) ?>
-<!--          <input class="layui-input" placeholder="分类名" name="catename">-->
+          <?= $form->field($model, 'status')->textInput(['class' => 'layui-input', 'placeholder' => '状态']) ?>
+          <!--          <input class="layui-input" placeholder="分类名" name="catename">-->
           <?= Html::submitButton('保存', ['class'=>'layui-btn','name' =>'submit-button', 'lay-filter' => 'sreach']) ?>
 
 <!--          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon"></i>增加</button>-->
@@ -72,6 +76,7 @@ use yii\bootstrap\ActiveForm;
             <th width="250">操作</th>
         </thead>
         <tbody class="x-cate">
+
           <tr cate-id='1' fid='0' >
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
